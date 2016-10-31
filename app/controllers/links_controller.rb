@@ -20,7 +20,7 @@ class LinksController < ApplicationController
 
   # GET /links/1/edit
   def edit
-    
+
   end
 
   # POST /links
@@ -68,6 +68,7 @@ class LinksController < ApplicationController
     def set_link
       @link = Link.find(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params

@@ -14,4 +14,9 @@
     summary: Faker::Lorem.sentence,
     url: Faker::Internet.url
   )
+  
+  Vote.create!(
+    value: rand(1..250)
+  )
+
 end
