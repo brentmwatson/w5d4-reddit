@@ -1,5 +1,27 @@
 <h1>New Link</h1>
 
-<%= render 'form', link: @link %>
+<!-- <%= render 'form', link: @link %>
 
-<%= link_to 'Back', links_path %>
+<%= link_to 'Back', links_path %> -->
+
+<div>
+    <%= form_for @link do |frm| %>
+    <div>
+        <%= frm.label :title %>
+        <%= frm.text_field :title %>
+    </div>
+    <div>
+        <%= frm.label :author %>
+        <%= frm.text_field :author %>
+    </div>
+    <div>
+        <%= frm.label :summary %>
+        <%= frm.text_field :summary %>
+    </div>
+    <div>
+        <%= frm.label :url %>
+        <%= frm.text_field :url %>
+    </div>
+    <%= frm.submit %>
+    <% end %>
+</div>

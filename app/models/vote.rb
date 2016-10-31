@@ -1,5 +1,5 @@
-class Vote < ApplicationRecord::Migration [5.0]
+class Vote < ApplicationRecord
 
-  belongs_to :links
+  belongs_to :link
 
 end

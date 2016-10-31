@@ -5,32 +5,43 @@
 
 <table>
     <thead colspan="3">
-            <td></td>
-            <td><h2>Votes</h2></td>
-            <td><h2>Link</h2></td>
-            <td><h2>Author</h2></td>
-            <td><h2>Summary</h2></td>
-            <td><h2>Edit</h2></td>
-            <td><h2>delete</h2></td>
+        <td></td>
+        <td>
+            <h2>Votes</h2>
+        </td>
+        <td>
+            <h2>Link</h2>
+        </td>
+        <td>
+            <h2>Author</h2>
+        </td>
+        <td>
+            <h2>Summary</h2>
+        </td>
+        <td>
+            <h2>delete</h2>
+        </td>
     </thead>
     <tbody>
         <% @links.each do |link| %>
         <tr>
             <td>
+                <%= link_to upvote_path(link) do %>
+                    <button type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    </button>
+                <% end %>
+                <%= link_to downvote_path(link) do %>
                 <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span><%= link_to '', upvote_path(link)%>
+                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
                 </button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span><%= link_to '', downvote_path(link)%>
-                </button>
+                <% end %>
             </td>
 
-
-            <td><%= @vote.show %></td>
-            <td><%= link_to link.title, link.url %></td>
+            <td><%= link.votes.sum(:value) %></td>
+            <td><%= link_to link.title, visitlink_path(link) %></td>
             <td><%= link.author %></td>
             <td><%= link.summary %></td>
-            <td><%= link_to 'Edit', edit_link_path(link) %></td>
             <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>

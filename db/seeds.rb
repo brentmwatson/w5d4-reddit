@@ -8,14 +8,14 @@
 
 15.times do
 
-  Link.create!(
+link = Link.create!(
     title: Faker::Book.title,
     author: Faker::Book.author,
     summary: Faker::Lorem.sentence,
     url: Faker::Internet.url
   )
-  
-  Vote.create!(
+
+ Vote.create!( link: link,
     value: rand(1..250)
   )
 

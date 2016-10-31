@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.left_joins(:votes).select("links.*, SUM(votes.value) as vote_sum").order('vote_sum DESC').group(:id)
+
   end
 
   # GET /links/1
@@ -63,6 +64,12 @@ class LinksController < ApplicationController
     end
   end
 
+  def visit
+        @link = Link.find(params[:id])
+        @link.votes << Vote.new(value: 1)
+        redirect_to @link.url
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
@@ -72,6 +79,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.fetch(:link, {})
+      params.require(:link).permit(:link, :title, :author, :summary, :url )
     end
 end
