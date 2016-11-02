@@ -27,9 +27,9 @@
         <tr>
             <td>
                 <%= link_to upvote_path(link) do %>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                    </button>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                </button>
                 <% end %>
                 <%= link_to downvote_path(link) do %>
                 <button type="button" class="btn btn-default btn-sm">
@@ -49,5 +49,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Link', new_link_path %>
+<%= link_to 'New User', new_user_path, class: "btn btn-primary" %>
